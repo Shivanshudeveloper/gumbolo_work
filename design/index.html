@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+    <title>Gumbolo</title>
+    <!-- SEO Meta Tags-->
+    <meta name="description" content="Best Gumbolo SaaS">
+    <meta name="keywords" content="bootstrap, business, consulting, coworking space, services, creative agency, dashboard, e-commerce, mobile app showcase, multipurpose, product landing, shop, software, ui kit, web studio, landing, html5, css3, javascript, gallery, slider, touch, creative">
+    <meta name="author" content="Createx Studio">
+    <!-- Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon and Touch Icons-->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="mask-icon" color="#5bbad5" href="safari-pinned-tab.svg">
+    <meta name="msapplication-TileColor" content="#766df4">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Page loading styles-->
+    <style>
+      .page-loading {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-transition: all .4s .2s ease-in-out;
+        transition: all .4s .2s ease-in-out;
+        background-color: #fff;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 9999;
+      }
+      .page-loading.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      .page-loading-inner {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        -webkit-transition: opacity .2s ease-in-out;
+        transition: opacity .2s ease-in-out;
+        opacity: 0;
+      }
+      .page-loading.active > .page-loading-inner {
+        opacity: 1;
+      }
+      .page-loading-inner > span {
+        display: block;
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        font-weight: normal;
+        color: #737491;
+      }
+      .page-spinner {
+        display: inline-block;
+        width: 2.75rem;
+        height: 2.75rem;
+        margin-bottom: .75rem;
+        vertical-align: text-bottom;
+        border: .15em solid #766df4;
+        border-right-color: transparent;
+        border-radius: 50%;
+        -webkit-animation: spinner .75s linear infinite;
+        animation: spinner .75s linear infinite;
+      }
+      @-webkit-keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes spinner {
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      
+    </style>
+    <!-- Page loading scripts-->
+    <script>
+      (function () {
+        window.onload = function () {
+          var preloader = document.querySelector('.page-loading');
+          preloader.classList.remove('active');
+          setTimeout(function () {
+            preloader.remove();
+          }, 2000);
+        };
+      })();
+      
+    </script>
+    <!-- Vendor Styles-->
+    <link rel="stylesheet" media="screen" href="vendor/simplebar/dist/simplebar.min.css"/>
+    <link rel="stylesheet" media="screen" href="vendor/tiny-slider/dist/tiny-slider.css"/>
+    <link rel="stylesheet" media="screen" href="vendor/lightgallery.js/dist/css/lightgallery.min.css"/>
+    <!-- Main Theme Styles + Bootstrap-->
+    <link rel="stylesheet" media="screen" href="css/theme.min.css">
+    <!-- Google Tag Manager-->
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WKV3GT5');
+    </script>
+  </head>
+  <!-- Body-->
+  <body>
+    <!-- Google Tag Manager (noscript)-->
+    <noscript>
+      <iframe src="http://www.googletagmanager.com/ns.html?id=GTM-WKV3GT5" height="0" width="0" style="display: none; visibility: hidden;"></iframe>
+    </noscript>
+    <!-- Page loading spinner-->
+    <div class="page-loading active">
+      <div class="page-loading-inner">
+        <div class="page-spinner"></div><span>Loading...</span>
+      </div>
+    </div>
+    <main class="page-wrapper">
+      <!-- Sign In Modal-->
+      <!-- Navbar (Floating dark)-->
+      <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
+      <header class="header navbar navbar-expand-lg navbar-light bg-light navbar-sticky" data-scroll-header data-fixed-element>
+        <div class="container px-0 px-xl-3">
+          <button class="navbar-toggler ms-n2 me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#primaryMenu"><span class="navbar-toggler-icon"></span></button><a class="navbar-brand flex-shrink-0 order-lg-1 mx-auto ms-lg-0 pe-lg-2 me-lg-4" href="index-2.html">COMPANY LOGO</a>
+          <div class="d-flex align-items-center order-lg-3 ms-lg-auto"><a class="nav-link-style fs-sm text-nowrap" href="signup.html"><i class="ai-user fs-xl me-2 align-middle"></i>Sign in</a><a class="btn btn-primary ms-grid-gutter d-none d-lg-inline-block navbar-btn" href="signin.html">Sign Up</a><a class="btn btn-primary ms-grid-gutter d-none d-lg-inline-block navbar-stuck-btn" href="post.html" >Post Free Ads</a></div>
+          <div class="offcanvas offcanvas-collapse order-lg-2" id="primaryMenu">
+            <div class="offcanvas-cap navbar-shadow">
+          <div class="offcanvas offcanvas-collapse order-lg-2" id="primaryMenu">
+            <div class="offcanvas-cap navbar-shadow">
+              <h5 class="mt-1 mb-0">Menu</h5>
+              <button class="btn-close lead" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <!-- Menu-->
+              <ul class="navbar-nav">
+                <li class="nav-item "><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item "><a class="nav-link" href="#!">About Us</a></li>
+                <li class="nav-item "><a class="nav-link" href="pricing.html">Pricing</a></li>
+                <li class="nav-item "><a class="nav-link" href="help.html">Help & Support</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- Page content-->
+      <!-- Hero-->
+      <section class="position-relative bg-faded-primary pt-7 pb-5 pb-md-6 pb-lg-7 overflow-hidden">
+        <div class="shape shape-bottom shape-curve bg-body">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 185.4">
+            <path fill="currentColor" d="M3000,0v185.4H0V0c496.4,115.6,996.4,173.4,1500,173.4S2503.6,115.6,3000,0z"></path>
+          </svg>
+        </div>
+        <div class="container pt-4 pt-md-5 pt-lg-0">
+          <div class="row align-items-center">
+            <div class="col-lg-4 text-center text-lg-start">
+              <h1 class="mb-3">
+                You focus on what you do best, We will take care the rest
+              </h1>
+              <p class="fs-lg text-muted mb-4">
+                Your all-in-one platform pet grooming software to manage, booking, schedule, clients and payments
+              </p>
+              <form class="d-flex pt-4 mx-auto mx-lg-0" style="max-width: 460px;">
+                <button class="btn btn-success w-100" type="submit">Sign Up Now</button>
+              </form>
+            </div>
+            <div class="col-xl-7 col-lg-8 offset-xl-1 pt-lg-3">
+              <img src="https://res.cloudinary.com/dx9dnqzaj/image/upload/v1622175223/petshop/2_buom9j.png" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Features section #1-->
+      <section class="container py-5 py-md-6 py-lg-7">
+        <div class="row pt-2">
+          <div class="col-sm-4 mb-grid-gutter pb-1">
+            <div class="mx-auto text-center" style="max-width: 278px;"><img class="d-inline-block mb-3" src="img/demo/software-landing/icons/01.svg" alt="Simple" width="56">
+              <h3 class="h5">User</h3>
+              <p class="fs-sm mb-0">All features are typically designed for pet groomers</p>
+            </div>
+          </div>
+          <div class="col-sm-4 mb-grid-gutter pb-1">
+            <div class="mx-auto text-center" style="max-width: 278px;"><img class="d-inline-block mb-3" src="img/demo/software-landing/icons/02.svg" alt="Fast" width="56">
+              <h3 class="h5">Fast</h3>
+              <p class="fs-sm mb-0">Find aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            </div>
+          </div>
+          <div class="col-sm-4 mb-grid-gutter pb-1">
+            <div class="mx-auto text-center" style="max-width: 278px;"><img class="d-inline-block mb-3" src="img/demo/software-landing/icons/03.svg" alt="Organized" width="67">
+              <h3 class="h5">Organized</h3>
+              <p class="fs-sm mb-0">Manage your clients and schedule with clear lableling</p>
+            </div>
+          </div>
+        </div>
+        
+      </section>
+      <!-- Split section (Video popup)-->
+      <section class="bg-secondary">
+        <div class="row g-0">
+          <div class="col-md-6 py-7 position-relative bg-size-cover order-md-2 overflow-hidden" style="background-image: url(img/demo/software-landing/video-bg.jpg);"><span class="position-absolute top-0 start-0 w-100 h-100 bg-black" style="opacity: 35%;"></span>
+            <div class="position-relative zindex-5 d-flex flex-column align-items-center justify-content-center h-100 px-3 py-4 py-lg-7"><a class="btn-video" href="https://www.youtube.com/watch?v=YW8VAy85oUE" data-sub-html="&lt;h6 class=&quot;fs-sm text-light&quot;&gt;Instagram Marketing Conference 2020&lt;/h6&gt;"></a></div>
+            <div class="shape shape-left bg-secondary d-none d-md-block">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264.8 670">
+                <path fill="currentColor" d="M264.8,669.8v0.2H0V0h7.5C5.7,23.7,4.8,47.8,4.8,72.1C4.8,332,110.3,557.6,264.8,669.8z"></path>
+              </svg>
+            </div>
+          </div>
+          <div class="col-md-6 px-3 ps-xl-0 pe-lg-5 pe-xl-7 py-2 py-lg-4 order-md-1">
+            <div class="ms-md-auto me-sm-7 py-5 my-sm-0 py-md-6 py-lg-7" style="max-width: 400px;">
+              <h2 class="mb-3 pb-1">How it works</h2>
+              <p>Find aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint.</p>
+              <img src="https://www.moego.pet/_next/image?url=%2Fimages%2Fswitch-cover-mobile.png&w=640&q=75" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Features section #2-->
+      <section class="container py-5 py-md-6 py-lg-7">
+        <div class="row align-items-center pt-3 pt-md-0">
+          <div class="col-md-7"><img class="d-block mx-auto" src="img/demo/software-landing/features.jpg" alt="Features" width="705"></div>
+          <div class="col-xl-4 col-md-5 offset-xl-1 pt-5 pt-md-0">
+            <h2 class="mb-3 text-center text-md-start">Organize your work anywhere</h2>
+            <p class="text-center text-md-start">Aute irOrganize your work anywhereure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+            <div class="row pt-5">
+              <img src="https://www.moego.pet/_next/image?url=%2Fimages%2Fswitch-cover-salon.png&w=640&q=75" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Pricing-->
+      <section class="pt-lg-3">
+        <h2 class="d-block bg-gradient text-light text-center py-5 px-3 mb-5">Pricing plans</h2>
+        <div class="container pt-2">
+          <div class="d-sm-flex align-items-center justify-content-center text-center text-sm-start">
+            <h3 class="mb-4 mb-sm-2 me-sm-4 pe-sm-2">Find the best plan for your work</h3><a class="btn btn-success mb-sm-2" href="#">Sign up for free</a>
+          </div>
+          <div class="row justify-content-center pt-5">
+            <div class="col-lg-10">
+              <div class="bg-light shadow-lg rounded-3 pt-3 px-4">
+                <div class="pricing-wrap pt-3 px-3">
+                  <div class="price-switch justify-content-end"><span class="price-label me-2">Monthly</span>
+                    <div class="form-check form-switch">
+                      <input class="form-check-input" type="checkbox" id="priceSwitch">
+                      <label class="form-check-label" for="priceSwitch"></label>
+                    </div><span class="price-label ms-1">Annual</span>
+                  </div>
+                  <div class="d-md-flex align-items-start border-bottom py-4 py-sm-5">
+                    <div class="ms-4 ms-sm-0 py-2 w-100" style="max-width: 15rem;">
+                      <h3 class="mb-2">Core</h3>
+                      <div class="fs-xs" style="max-width: 10rem;">Find aute irure dolor in reprehenderit in volatek</div>
+                    </div>
+                    <div class="d-flex w-100 align-items-end py-3 py-sm-2 px-4" style="max-width: 20rem;"><span class="h2 fw-normal text-muted mb-1 me-2">$</span><span class="price display-2 fw-normal text-primary px-1 me-2" data-current-price="39" data-new-price="39">39</span><span class="h3 fs-lg fw-medium text-muted mb-2">per<br>month</span></div>
+                    <ul class="list-unstyled py-2 mb-0">
+                      <li class="d-flex align-items-center text-nowrap mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Up to 3 projects for each member</span></li>
+                      <li class="d-flex align-items-center text-nowrap mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>2 team members allowed</span></li>
+                      <li class="d-flex align-items-center text-nowrap mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Add-ons: Extra user $10</span></li>
+                    </ul>
+                  </div>
+                  <div class="d-md-flex align-items-start py-4 py-sm-5">
+                    <div class="ms-4 ms-sm-0 py-2 w-100" style="max-width: 15rem;">
+                      <h3 class="mb-2">Standard</h3>
+                      <div class="fs-xs" style="max-width: 10rem;">Find aute irure dolor in reprehenderit in volatek</div>
+                    </div>
+                    <div class="d-flex w-100 align-items-end py-3 py-sm-2 px-4" style="max-width: 20rem;"><span class="h2 fw-normal text-muted mb-1 me-2">$</span><span class="price display-2 fw-normal text-primary px-1 me-2" data-current-price="0" data-new-price="0">0</span><span class="h3 fs-lg fw-medium text-muted mb-2">per<br>month</span></div>
+                    <ul class="list-unstyled py-2 mb-0">
+                      <li class="d-flex align-items-center text-nowrap mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Unlimited number of projects</span></li>
+                      <li class="d-flex align-items-center text-nowrap mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Up to 5 team members</span></li>
+                      <li class="d-flex align-items-center text-nowrap mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>24/7 support</span></li>
+                      <li class="d-flex align-items-center text-nowrap mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Up to 30GB storage space</span></li>
+                      <li class="d-flex align-items-center text-nowrap mb-3"><i class="ai-check fs-xl text-primary me-2"></i><span>Add-ons: Extra user $10</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="container position-relative zindex-5 pt-5 pt-md-6 pt-lg-7">
+        <h2 class="text-center pt-3 pt-md-0 mb-5">More solutions for you</h2>
+        <div class="row">
+          <div class="col-sm-6 mb-grid-gutter">
+            <div class="bg-light shadow rounded-3 py-5 px-4">
+              <div class="d-block d-xl-flex align-items-center px-lg-3 py-xl-2 text-center text-sm-start"><img class="d-inline-block mb-3 mb-xl-0" src="https://www.moego.pet/_next/image?url=%2Fimages%2Fillustration-subscription-69.png&w=384&q=75" alt="Team" width="140">
+                <div class="ps-xl-3 ms-xl-3">
+                  <h3 class="h4 text-primary pb-1">For Clients</h3>
+                  <p>Aute irure dolor in reprehenderit in volup tate velit esse cillum dolore eu fugiat nulla pariatur sed quia consequuntur.</p><a class="nav-link-style" href="#">Read more<i class="ai-chevron-right fs-xl ms-1 align-middle"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 mb-grid-gutter">
+            <div class="bg-light shadow rounded-3 py-5 px-4">
+              <div class="d-block d-xl-flex align-items-center px-lg-3 py-xl-2 text-center text-sm-start"><img class="d-inline-block mb-3 mb-xl-0" src="https://www.moego.pet/_next/image?url=%2Fimages%2Fillustration-subscription-elite.png&w=384&q=75" alt="Freelancer" width="140">
+                <div class="ps-xl-3 ms-xl-3">
+                  <h3 class="h4 text-primary pb-1">For Pet Shops</h3>
+                  <p>Aute irure dolor in reprehenderit in volup tate velit esse cillum dolore eu fugiat nulla pariatur sed quia consequuntur.</p><a class="nav-link-style" href="#">Read more<i class="ai-chevron-right fs-xl ms-1 align-middle"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Q&A-->
+      <section class="position-relative bg-secondary py-5 py-md-6 py-lg-7" style="margin-top: -200px;">
+        <div style="height: 200px;"></div>
+        <div class="shape shape-top shape-curve bg-body">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 185.4">
+            <path fill="currentColor" d="M3000,185.4V0H0v185.4C496.4,69.8,996.4,12,1500,12S2503.6,69.8,3000,185.4z"></path>
+          </svg>
+        </div>
+        <div class="container mt-n4 py-3 py-md-2">
+          <h2 class="text-center mb-5">Questions &amp; Answers</h2>
+          <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-9">
+              <div class="accordion" id="faq">
+                <div class="accordion-item bg-white shadow">
+                  <h2 class="accordion-header" id="faq-heading-1">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1" aria-expanded="true" aria-controls="faq-content-1">Can I import my projects from Teamwork?</button>
+                  </h2>
+                  <div class="accordion-collapse collapse show" id="faq-content-1" aria-labelledby="faq-heading-1" data-bs-parent="#faq">
+                    <div class="accordion-body">
+                      <div class="fs-sm">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item bg-white shadow">
+                  <h2 class="accordion-header" id="faq-heading-2">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-2" aria-expanded="false" aria-controls="faq-content-2">What are correct file permissions?</button>
+                  </h2>
+                  <div class="accordion-collapse collapse" id="faq-content-2" aria-labelledby="faq-heading-2" data-bs-parent="#faq">
+                    <div class="accordion-body">
+                      <div class="fs-sm">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item bg-white shadow">
+                  <h2 class="accordion-header" id="faq-heading-3">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3" aria-expanded="false" aria-controls="faq-content-3">How to set default projects for new users?</button>
+                  </h2>
+                  <div class="accordion-collapse collapse" id="faq-content-3" aria-labelledby="faq-heading-3" data-bs-parent="#faq">
+                    <div class="accordion-body">
+                      <div class="fs-sm">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item bg-white shadow">
+                  <h2 class="accordion-header" id="faq-heading-4">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-4" aria-expanded="false" aria-controls="faq-content-4">Is it possible to upload files from Google Drive?</button>
+                  </h2>
+                  <div class="accordion-collapse collapse" id="faq-content-4" aria-labelledby="faq-heading-4" data-bs-parent="#faq">
+                    <div class="accordion-body">
+                      <div class="fs-sm">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- CTA-->
+      <section class="bg-gradient py-5">
+        <div class="container py-2 py-sm-4">
+          <div class="row align-items-center">
+            <div class="col-xl-6 col-md-7 mb-5 mb-md-0">
+              <h2 class="text-light text-center text-md-start">Empower  your Shop</h2>
+              <p class="text-light mb-grid-gutter text-center text-md-start">Everything you need from A to Z</p>
+              <form class="row">
+                <div class="col-lg-8 col-md-7 col-sm-8 mb-3 mb-sm-0">
+                  <input class="form-control" type="email" placeholder="Type your email..." required>
+                </div>
+                <div class="col-lg-4 col-md-5 col-sm-4">
+                  <button class="btn btn-success d-block w-100" type="submit">Start free trial</button>
+                </div>
+              </form>
+            </div>
+            <div class="col-md-5 offset-xl-1"><img class="d-block mx-auto" src="https://www.moego.pet/_next/image?url=%2Fimages%2Fillustration-start-moego.png&w=640&q=75" alt="Illustration" width="437"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer-->
+    <footer class="site-footer bg-dark py-5">
+      <div class="container d-sm-flex justify-content-between align-items-center text-center">
+        <div class="mb-4 mb-sm-0 ms-sm-4 order-sm-2"><a class="btn-social bs-outline bs-light bs-facebook" href="#"><i class="ai-facebook"></i></a><a class="btn-social bs-outline bs-light bs-twitter ms-2" href="#"><i class="ai-twitter"></i></a><a class="btn-social bs-outline bs-light bs-instagram ms-2" href="#"><i class="ai-instagram"></i></a><a class="btn-social bs-outline bs-light bs-google ms-2" href="#"><i class="ai-google"></i></a></div>
+        <p class="fs-sm mb-0 order-sm-1"><span class="text-light opacity-50 me-1">© All rights reserved. Made by</span><a class="nav-link-style nav-link-light" href="https://createx.studio/" target="_blank" rel="noopener">Your Company</a></p>
+      </div>
+    </footer>
+    <!-- Back to top button--><a class="btn-scroll-top" href="#top" data-scroll data-fixed-element><span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span><i class="btn-scroll-top-icon ai-arrow-up">   </i></a>
+    <!-- Vendor scrits: js libraries and plugins-->
+    <script src="vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/simplebar/dist/simplebar.min.js"></script>
+    <script src="vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="vendor/tiny-slider/dist/min/tiny-slider.js"></script>
+    <script src="vendor/lightgallery.js/dist/js/lightgallery.min.js"></script>
+    <script src="vendor/lg-video.js/dist/lg-video.min.js"></script>
+    <!-- Main theme script-->
+    <script src="js/theme.min.js"></script>
+  </body>
+
+<!-- Mirrored from around.createx.studio/demo-product-software.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 05 Apr 2021 17:14:29 GMT -->
+</html>
