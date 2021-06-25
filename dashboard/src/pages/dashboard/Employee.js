@@ -416,7 +416,6 @@ export default function Employee() {
 
       <FormikProvider value={formik}>
         <Form noValidate autoComplete="off">
-            <Container maxWidth="md">
             <Grid container spacing={3}>
                 <Grid item xs={12} >
                     <Button onClick={handleClickOpenEmployee} style={{ float: 'right', marginRight: '10px' }} variant="contained" color="primary">
@@ -562,7 +561,6 @@ export default function Employee() {
             </Grid>
 
 
-            </Container>
         </Form>
       </FormikProvider>
     </>
