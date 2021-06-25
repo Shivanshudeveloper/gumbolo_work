@@ -1,5 +1,5 @@
-// const API_SERVICE = 'https://yourserver.herokuapp.com';
-const API_SERVICE = 'http://localhost:5000';
+const API_SERVICE = 'https://gumbolo.herokuapp.com';
+// const API_SERVICE = 'http://localhost:5000';
 const SECRET_KEY = "7BA7A185C3B21C5542B884CC28EF1";
 
 export {
