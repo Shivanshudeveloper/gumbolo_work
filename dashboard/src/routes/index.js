@@ -137,7 +137,9 @@ export default function Router() {
           ]
         },
         { path: 'calendar', element: <Calendar /> },
-        { path: 'aggrements', element: <Aggrements /> }
+        { path: 'aggrements', element: <Aggrements /> },
+        { path: 'employee', element: <EmployeeManagement /> },
+        
       ]
     },
 
@@ -261,6 +263,7 @@ const Chat = Loadable(lazy(() => import('../pages/dashboard/Chat')));
 const Mail = Loadable(lazy(() => import('../pages/dashboard/Mail')));
 const Calendar = Loadable(lazy(() => import('../pages/dashboard/Calendar')));
 const Aggrements = Loadable(lazy(() => import('../pages/dashboard/Aggrements')));
+const EmployeeManagement = Loadable(lazy(() => import('../pages/dashboard/Employee')));
 // Docs
 const Docs = Loadable(lazy(() => import('../pages/Docs')));
 // Main

@@ -44,6 +44,10 @@ const sidebarConfig = [
         title: 'Aggrements',
         path: '/dashboard/aggrements',
       },
+      {
+        title: 'Employee Management',
+        path: '/dashboard/employee',
+      },
       // {
       //   title: 'Report',
       //   path: PATH_DASHBOARD.calendar
