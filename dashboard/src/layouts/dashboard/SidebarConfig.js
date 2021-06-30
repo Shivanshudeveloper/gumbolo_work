@@ -33,15 +33,15 @@ const sidebarConfig = [
         path: PATH_DASHBOARD.general.app,
       },
       {
-        title: 'Client',
+        title: 'Clients',
         path: PATH_DASHBOARD.user.list,
       },
       {
-        title: 'Appoints',
+        title: 'Appointments',
         path: PATH_DASHBOARD.calendar,
       },
       {
-        title: 'Aggrements',
+        title: 'Agreements',
         path: '/dashboard/aggrements',
       },
       {

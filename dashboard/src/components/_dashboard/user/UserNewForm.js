@@ -172,22 +172,22 @@ export default function UserNewForm({ isEdit, currentUser }) {
                     label="Pet Name"
                     onChange={(e) => setpetname(e.target.value)}
                   />
-                  <TextField
+                  {/* <TextField
                     fullWidth
                     onChange={(e) => setamountpay(e.target.value)}
                     label="Amount to Pay"
-                  />
+                  /> */}
                 </Stack>
 
 
-                <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 3, sm: 2 }}>
+                {/* <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 3, sm: 2 }}>
                   <TextField
                     fullWidth
                     label="Date of Appointment"
                     onChange={(e) => setdateofappointment(e.target.value)}
                     type="date"
                   />
-                </Stack>
+                </Stack> */}
 
 
                 <hr />
