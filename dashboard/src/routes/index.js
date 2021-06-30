@@ -139,6 +139,7 @@ export default function Router() {
         { path: 'calendar', element: <Calendar /> },
         { path: 'aggrements', element: <Aggrements /> },
         { path: 'employee', element: <EmployeeManagement /> },
+        { path: 'payroll', element: <PayRoll />}
         
       ]
     },
@@ -264,6 +265,7 @@ const Mail = Loadable(lazy(() => import('../pages/dashboard/Mail')));
 const Calendar = Loadable(lazy(() => import('../pages/dashboard/Calendar')));
 const Aggrements = Loadable(lazy(() => import('../pages/dashboard/Aggrements')));
 const EmployeeManagement = Loadable(lazy(() => import('../pages/dashboard/Employee')));
+const PayRoll = Loadable(lazy(() => import('../pages/dashboard/PayRoll')));
 // Docs
 const Docs = Loadable(lazy(() => import('../pages/Docs')));
 // Main
