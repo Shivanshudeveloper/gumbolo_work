@@ -50,7 +50,7 @@ const sidebarConfig = [
       },
       {
         title: 'Invoice Generator',
-        path: '/dashboard/payroll',
+        path: 'https://gumbolo-invoice.vercel.app/',
       },
       {
         title: 'Pay Rolls',
