@@ -49,9 +49,13 @@ const sidebarConfig = [
         path: '/dashboard/employee',
       },
       {
-        title: 'Pay Rolls',
+        title: 'Invoice Generator',
         path: '/dashboard/payroll',
       },
+      {
+        title: 'Pay Rolls',
+        path: '/dashboard/payroll',
+      }
       // {
       //   title: 'Report',
       //   path: PATH_DASHBOARD.calendar
