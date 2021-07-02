@@ -259,10 +259,6 @@ export default function Employee() {
                     </Grid>
 
                     <Grid item xs={12} >
-                        <TextField fullWidth id="standard-basic" label="Payroll" />
-                    </Grid>
-
-                    <Grid item xs={12} >
                         <TextField fullWidth id="standard-basic" label="Position eg. Worker, Manager, Staff, Maid" />
                     </Grid>
 
