@@ -42,6 +42,19 @@ import Grid from '@material-ui/core/Grid';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
 
+import Dialog from '@material-ui/core/Dialog';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItem from '@material-ui/core/ListItem';
+import List from '@material-ui/core/List';
+import Divider from '@material-ui/core/Divider';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import Slide from '@material-ui/core/Slide';
+
+import TextField from '@material-ui/core/TextField';
+
+
 
 const BorderLinearProgress = withStyles((theme) => ({
   root: {
@@ -146,6 +159,21 @@ const data = [
     { year: 'Jun 27 -Jul 3', population: 6.127 },
 ];
 
+const useStylesDia = makeStyles((theme) => ({
+  appBar: {
+    position: 'relative',
+  },
+  title: {
+    marginLeft: theme.spacing(2),
+    flex: 1,
+  },
+}));
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
+
 // import { useParams } from 'react-router';
 
 // ----------------------------------------------------------------------
@@ -172,6 +200,17 @@ export default function PayRoll(props) {
     setAnchorEl(null);
   };
 
+  const classesDia = useStylesDia();
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleCloseDia = () => {
+    setOpen(false);
+  };
+
   // let { userid } = useParams();
   // console.log(userid);
 
@@ -189,7 +228,64 @@ export default function PayRoll(props) {
       </Menu>
       <Container maxWidth="xl">
         <h2 className="fontchange">Pay Roll</h2>
-        <Button style={{ float: 'right', marginBottom: '20px' }} variant="contained">Create a New Payroll</Button>
+        <Button style={{ float: 'right', marginBottom: '20px' }} variant="contained" onClick={handleClickOpen}>Create a New Payroll</Button>
+        <Dialog fullScreen open={open} onClose={handleCloseDia} TransitionComponent={Transition}>
+          <AppBar className={classesDia.appBar}>
+            <Toolbar>
+              <IconButton edge="start" color="inherit" onClick={handleCloseDia} aria-label="close">
+                <CloseIcon />
+              </IconButton>
+              <Typography variant="h6" className={classesDia.title}>
+                Payroll
+              </Typography>
+              </Toolbar>
+            </AppBar>
+            <Container maxWidth="sm">
+            <br />
+            <div>
+              <h1 style={{fontWeight: "bold"}}>Payroll</h1>
+            </div>
+            <div>
+              <TextField
+                label="Pay Roll"
+                style={{ margin: "8px" }}
+                placeholder=""
+                fullWidth
+              />
+              <TextField
+                label="Employee Name"
+                style={{ margin: 8 }}
+                placeholder=""
+                fullWidth
+              />
+              <TextField
+                label="Employee ID"
+                style={{ margin: 8 }}
+                placeholder=""
+                fullWidth
+              />
+              <TextField
+                label="Hours Worked"
+                style={{ margin: 8 }}
+                placeholder=""
+                fullWidth
+              />
+              <TextField
+                label="Perks"
+                style={{ margin: 8 }}
+                placeholder=""
+                fullWidth
+              />
+              <TextField
+                label="Total Pay Roll"
+                style={{ margin: 8 }}
+                placeholder=""
+                fullWidth
+              />
+              <Button variant="contained" color="primary" fullWidth style={{ margin: 8 }} size="large">Add a new payroll</Button>
+            </div>
+            </Container>
+        </Dialog>
         <br />
         <AppBar position="static" color="default">
             <Tabs
