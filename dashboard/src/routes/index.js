@@ -139,7 +139,8 @@ export default function Router() {
         { path: 'calendar', element: <Calendar /> },
         { path: 'aggrements', element: <Aggrements /> },
         { path: 'employee', element: <EmployeeManagement /> },
-        { path: 'payroll', element: <PayRoll />}
+        { path: 'payroll', element: <PayRoll />},
+        { path: 'invoiceapp', element: <InvoiceApp />},
         
       ]
     },
@@ -246,6 +247,7 @@ const VerifyCode = Loadable(lazy(() => import('../pages/authentication/VerifyCod
 const GeneralApp = Loadable(lazy(() => import('../pages/dashboard/GeneralApp')));
 const GeneralEcommerce = Loadable(lazy(() => import('../pages/dashboard/GeneralEcommerce')));
 const GeneralAnalytics = Loadable(lazy(() => import('../pages/dashboard/GeneralAnalytics')));
+const InvoiceApp = Loadable(lazy(() => import('../pages/dashboard/Invoice')));
 const EcommerceShop = Loadable(lazy(() => import('../pages/dashboard/EcommerceShop')));
 const EcommerceProductDetails = Loadable(lazy(() => import('../pages/dashboard/EcommerceProductDetails')));
 const EcommerceProductList = Loadable(lazy(() => import('../pages/dashboard/EcommerceProductList')));
