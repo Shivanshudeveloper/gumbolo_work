@@ -123,7 +123,7 @@ export default function CalendarForm({ event, range, onCancel }) {
         <Stack spacing={3} sx={{ p: 3 }}>
           <TextField
             fullWidth
-            label="Title"
+            label="Client Name"
             {...getFieldProps('title')}
             error={Boolean(touched.title && errors.title)}
             helperText={touched.title && errors.title}
@@ -133,13 +133,21 @@ export default function CalendarForm({ event, range, onCancel }) {
             fullWidth
             multiline
             maxRows={4}
-            label="Description"
+            label="Service Title"
             {...getFieldProps('description')}
             error={Boolean(touched.description && errors.description)}
             helperText={touched.description && errors.description}
           />
 
-          <FormControlLabel control={<Switch checked={values.allDay} {...getFieldProps('allDay')} />} label="All day" />
+          <TextField
+            fullWidth
+            multiline
+            maxRows={4}
+            label="Service Description"
+            // {...getFieldProps('description')}
+            //error={Boolean(touched.description && errors.description)}
+            //helperText={touched.description && errors.description}
+          />
 
           <MobileDateTimePicker
             label="Start date"
