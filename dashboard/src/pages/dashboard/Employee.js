@@ -140,6 +140,16 @@ export default function Employee() {
     setOpenTime(false);
   };
 
+  const [openTimeEnd, setOpenTimeEnd] = React.useState(false);
+
+  const handleClickOpenTimeEnd = () => {
+    setOpenTimeEnd(true);
+  };
+
+  const handleCloseTimeEnd = () => {
+    setOpenTimeEnd(false);
+  };
+
 
 
   const [open, setOpen] = useState(false);
@@ -208,6 +218,10 @@ export default function Employee() {
     // do something
   }
 
+  const onChangeEndTime = (hours, minutes) => {
+    // do something
+  }
+
   return (
     <>
         <Dialog
@@ -216,12 +230,29 @@ export default function Employee() {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">Select Time</DialogTitle>
+          <DialogTitle id="alert-dialog-title">Start Time</DialogTitle>
           <DialogContent>
               <Timepicker onChange={onChange} />
           </DialogContent>
           <DialogActions>
             <Button onClick={handleCloseTime} color="primary">
+              Close
+            </Button>
+          </DialogActions>
+        </Dialog>
+
+        <Dialog
+          open={openTimeEnd}
+          onClose={handleCloseTimeEnd}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">End Time</DialogTitle>
+          <DialogContent>
+              <Timepicker onChange={onChangeEndTime} />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleCloseTimeEnd} color="primary">
               Close
             </Button>
           </DialogActions>
@@ -377,11 +408,11 @@ export default function Employee() {
             <Container style={{ marginTop: '20px' }} maxWidth="md">
                 <h2>Schedule Work to Employee</h2>
                 <Grid style={{ marginTop: '4px', marginBottom: '20px' }} container spacing={3}>
-                  <Grid item xs={4}>
+                  <Grid item xs={3}>
                     <TextField fullWidth type="date" id="outlined-basic" variant="outlined" />
                   </Grid>
 
-                  <Grid item xs={4}>
+                  <Grid item xs={3}>
                     <Button
                         fullWidth
                         type="button"
@@ -392,11 +423,26 @@ export default function Employee() {
                         style={{ height: '57px' }}
                         sx={{ mr: 1.5 }}
                     >
-                    Select Time
+                    Start Time
                     </Button>
                   </Grid>
 
-                  <Grid item xs={4}>
+                  <Grid item xs={3}>
+                    <Button
+                        fullWidth
+                        type="button"
+                        color="primary"
+                        variant="outlined"
+                        onClick={handleClickOpenTimeEnd}
+                        size="large"
+                        style={{ height: '57px' }}
+                        sx={{ mr: 1.5 }}
+                    >
+                    End Time
+                    </Button>
+                  </Grid>
+
+                  <Grid item xs={3}>
                     <Button
                         fullWidth
                         type="button"
