@@ -7,14 +7,13 @@ import "firebase/analytics";
 import 'firebase/firestore';
 
 var firebaseConfig = {
-    apiKey: "AIzaSyCLy_gtKWKjx8NGJrCg5xnt6wymujhfilk",
-    authDomain: "todolist-7ae58.firebaseapp.com",
-    databaseURL: "https://todolist-7ae58-default-rtdb.firebaseio.com",
-    projectId: "todolist-7ae58",
-    storageBucket: "todolist-7ae58.appspot.com",
-    messagingSenderId: "268359488891",
-    appId: "1:268359488891:web:5580bd26491f6a46d919de",
-    measurementId: "G-3J2YWV1GLG"
+    apiKey: "AIzaSyAB8H8uco5aNiniI8VsIprhijac6MwfUcI",
+    authDomain: "gumbolo.firebaseapp.com",
+    projectId: "gumbolo",
+    storageBucket: "gumbolo.appspot.com",
+    messagingSenderId: "224765942327",
+    appId: "1:224765942327:web:1dc405f89661515d0bfdb2",
+    measurementId: "G-LG7F4DF5EB"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

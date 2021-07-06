@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSnackbar } from 'notistack';
 import { useCallback, useState } from 'react';
 import { Form, FormikProvider, useFormik } from 'formik';
@@ -48,6 +48,12 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+
+
+import { firestore, storage } from '../../Firebase/index';
+import { v4 as uuid4 } from 'uuid';
+
+import Snackbar from '@material-ui/core/Snackbar';
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -200,8 +206,9 @@ export default function Employee() {
 
   var { errors, values, touched, handleSubmit, isSubmitting, setFieldValue, getFieldProps } = formik;
 
-  const handleDrop = useCallback(
+  const handleDrop2 = useCallback(
     (acceptedFiles) => {
+      handleDrop1(acceptedFiles)
       const file = acceptedFiles[0];
       if (file) {
         setFieldValue('cover', {
@@ -222,6 +229,147 @@ export default function Employee() {
     // do something
   }
 
+// new user
+
+const [newUser, setNewUser] = useState({
+  firstname: "",
+  lastname: "",
+  email: "",
+  phone: "",
+  address: "",
+  position: "",
+  hours: "",
+  image: ""
+});
+
+const changeEle = (event) => {
+  const {name, value} = event.target;
+  setNewUser(prevValue => {
+      return {
+          ...prevValue,
+          [name]: value
+      }
+  })
+}
+
+const handelUserSumbit = () => {
+  axios.post(`${API_SERVICE}/api/v1/main/adduser`, newUser).then(res => {
+    console.log("User added successfully");
+    setNewUser({
+      firstname: "",
+      lastname: "",
+      email: "",
+      phone: "",
+      address: "",
+      position: "",
+      hours: "",
+      image: ""
+    })
+    setOpenSbar(true);
+    handleCloseEmployee()
+    getAllData()
+  }
+)
+}
+
+//firebase image storage
+
+  const [file,setFile] = useState([])
+
+  React.useEffect(() => {
+      if (file.length > 0) {
+          onSubmit_();
+      } else {
+          console.log("N");
+      }
+  }, [file]);
+
+  const handleDrop1 = async (acceptedFiles) => {
+      setFile(acceptedFiles.map(file => file));
+  }
+
+  const onSubmit_ = () => {
+      if (file.length > 0) {
+          file.forEach(file => {
+              const timeStamp = Date.now();
+              var uniquetwoKey = uuid4();
+              uniquetwoKey = uniquetwoKey + timeStamp;
+              const uploadTask = storage.ref(`pictures/${uniquetwoKey}/${file.name}`).put(file);
+              uploadTask.on('state_changed', (snapshot) => {
+                  const progress =  Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+                  console.log(`Uploading ${progress} %`);
+              },
+              (error) => {
+                  console.log(error)
+              },
+              async () => {
+                  // When the Storage gets Completed
+                  const filePath = await uploadTask.snapshot.ref.getDownloadURL();
+                  console.log('File Uploaded');
+                  setNewUser(prevValue => {
+                    return{
+                      ...prevValue,
+                      "image": filePath
+                    }
+                  })
+              });
+          })
+      } else {
+          console.log('No File Selected Yet');
+      }
+  }
+
+// all users
+  const [allUsers, setAllUsers] = useState([]) 
+  
+  const getAllData = async() => {
+    await axios.get(`${API_SERVICE}/api/v1/main/getalluser`).then(res => {
+      setAllUsers(res.data.data)
+    })
+    console.log("got data")
+    console.log(allUsers)
+  }
+
+  useEffect(() => {
+    getAllData()
+  }, [])
+
+  function showUser(user_){
+    return(
+      <Grid item xs={6} sm={3}>
+        <Card className={classes.root}>
+            <CardContent>
+              <center>
+                <Avatar alt="Remy Sharp" src={user_.image} className={classes.large} />
+                  <br />
+                  <h4>{user_.firstname} {user_.lastname}</h4>
+                  <h5>{user_.email}</h5>
+                  </center>
+
+            </CardContent>
+            <CardActions>
+              <Button onClick={handleClickOpenJob} fullWidth>View More</Button>
+            </CardActions>
+          </Card>
+      </Grid>
+    );
+  }
+//
+
+const [openSbar, setOpenSbar] = React.useState(false);
+
+  const handleClickSbar = () => {
+    setOpenSbar(true);
+  };
+
+  const handleCloseSbar = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenSbar(false);
+  };
+
+//
   return (
     <>
         <Dialog
@@ -272,29 +420,29 @@ export default function Employee() {
                 <h2>Add Employee</h2>
                 <Grid style={{ marginTop: '4px', marginBottom: '20px' }} container spacing={3}>
                     <Grid item xs={6} >
-                        <TextField fullWidth id="standard-basic" label="First Name" />
+                        <TextField fullWidth id="standard-basic" label="First Name" name="firstname" onChange={changeEle} value={newUser.firstname}/>
                     </Grid>
                     <Grid item xs={6} >
-                        <TextField fullWidth id="standard-basic" label="Last Name" />
+                        <TextField fullWidth id="standard-basic" label="Last Name" name="lastname" onChange={changeEle} value={newUser.lastname}/>
                     </Grid>
                     
                     <Grid item xs={6} >
-                        <TextField fullWidth id="standard-basic" label="Email" />
+                        <TextField fullWidth id="standard-basic" label="Email" name="email" onChange={changeEle} value={newUser.email}/>
                     </Grid>
                     <Grid item xs={6} >
-                        <TextField fullWidth id="standard-basic" label="Phone No." />
+                        <TextField fullWidth id="standard-basic" label="Phone No." name="phone" onChange={changeEle} value={newUser.phone}/>
                     </Grid>
 
                     <Grid item xs={12} >
-                        <TextField fullWidth id="standard-basic" label="Address" />
+                        <TextField fullWidth id="standard-basic" label="Address" name="address" onChange={changeEle} value={newUser.address}/>
                     </Grid>
 
                     <Grid item xs={12} >
-                        <TextField fullWidth id="standard-basic" label="Position eg. Worker, Manager, Staff, Maid" />
+                        <TextField fullWidth id="standard-basic" label="Position eg. Worker, Manager, Staff, Maid" name="position" onChange={changeEle} value={newUser.position}/>
                     </Grid>
 
                     <Grid item xs={12} >
-                        <TextField fullWidth id="standard-basic" label="Working hours" />
+                        <TextField fullWidth id="standard-basic" label="Working hours" name="hours" onChange={changeEle} value={newUser.hours}/>
                     </Grid>
 
                     <Grid item xs={12}>
@@ -303,7 +451,7 @@ export default function Employee() {
                         maxSize={3145728}
                         accept="image/*"
                         file={values.cover}
-                        onDrop={handleDrop}
+                        onDrop={handleDrop2}
                         error={Boolean(touched.cover && errors.cover)}
                         />
                         {touched.cover && errors.cover && (
@@ -320,7 +468,7 @@ export default function Employee() {
                             color="primary"
                             variant="contained"
                             size="large"
-                            onClick={handleOpenPreview}
+                            onClick={handelUserSumbit}
                             sx={{ mr: 1.5 }}
                         >
                         Submit
@@ -475,140 +623,29 @@ export default function Employee() {
             </Grid>
 
             <Grid style={{ marginTop: '20px' }} container spacing={3}>
-                <Grid item xs={6} sm={3}>
-                    <Card className={classes.root}>
-                        <CardContent>
-                            <center>
-                                <Avatar alt="Remy Sharp" src="https://writestylesonline.com/wp-content/uploads/2019/01/What-To-Wear-For-Your-Professional-Profile-Picture-or-Headshot.jpg" className={classes.large} />
-                                <br />
-                                <h4>Riya Sharma</h4>
-                                <h5>riya@gmail.com</h5>
-                            </center>
-
-                        </CardContent>
-                        <CardActions>
-                            <Button onClick={handleClickOpenJob} fullWidth>View More</Button>
-                        </CardActions>
-                    </Card>
-                </Grid>
-                <Grid item xs={6} sm={3}>
-                    <Card className={classes.root}>
-                        <CardContent>
-                            <center>
-                                <Avatar alt="Remy Sharp" src="https://writestylesonline.com/wp-content/uploads/2019/01/What-To-Wear-For-Your-Professional-Profile-Picture-or-Headshot.jpg" className={classes.large} />
-                                <br />
-                                <h4>Riya Sharma</h4>
-                                <h5>riya@gmail.com</h5>
-                            </center>
-
-                        </CardContent>
-                        <CardActions>
-                            <Button onClick={handleClickOpenJob} fullWidth>View More</Button>
-                        </CardActions>
-                    </Card>
-                </Grid>
-                <Grid item xs={6} sm={3}>
-                    <Card className={classes.root}>
-                        <CardContent>
-                            <center>
-                                <Avatar alt="Remy Sharp" src="https://writestylesonline.com/wp-content/uploads/2019/01/What-To-Wear-For-Your-Professional-Profile-Picture-or-Headshot.jpg" className={classes.large} />
-                                <br />
-                                <h4>Riya Sharma</h4>
-                                <h5>riya@gmail.com</h5>
-                            </center>
-
-                        </CardContent>
-                        <CardActions>
-                            <Button onClick={handleClickOpenJob} fullWidth>View More</Button>
-                        </CardActions>
-                    </Card>
-                </Grid>
-                <Grid item xs={6} sm={3}>
-                    <Card className={classes.root}>
-                        <CardContent>
-                            <center>
-                                <Avatar alt="Remy Sharp" src="https://writestylesonline.com/wp-content/uploads/2019/01/What-To-Wear-For-Your-Professional-Profile-Picture-or-Headshot.jpg" className={classes.large} />
-                                <br />
-                                <h4>Riya Sharma</h4>
-                                <h5>riya@gmail.com</h5>
-                            </center>
-
-                        </CardContent>
-                        <CardActions>
-                            <Button onClick={handleClickOpenJob} fullWidth>View More</Button>
-                        </CardActions>
-                    </Card>
-                </Grid>
-
-                <Grid item xs={6} sm={3}>
-                    <Card className={classes.root}>
-                        <CardContent>
-                            <center>
-                                <Avatar alt="Remy Sharp" src="https://writestylesonline.com/wp-content/uploads/2019/01/What-To-Wear-For-Your-Professional-Profile-Picture-or-Headshot.jpg" className={classes.large} />
-                                <br />
-                                <h4>Riya Sharma</h4>
-                                <h5>riya@gmail.com</h5>
-                            </center>
-
-                        </CardContent>
-                        <CardActions>
-                            <Button onClick={handleClickOpenJob} fullWidth>View More</Button>
-                        </CardActions>
-                    </Card>
-                </Grid>
-                <Grid item xs={6} sm={3}>
-                    <Card className={classes.root}>
-                        <CardContent>
-                            <center>
-                                <Avatar alt="Remy Sharp" src="https://writestylesonline.com/wp-content/uploads/2019/01/What-To-Wear-For-Your-Professional-Profile-Picture-or-Headshot.jpg" className={classes.large} />
-                                <br />
-                                <h4>Riya Sharma</h4>
-                                <h5>riya@gmail.com</h5>
-                            </center>
-
-                        </CardContent>
-                        <CardActions>
-                            <Button fullWidth>View More</Button>
-                        </CardActions>
-                    </Card>
-                </Grid>
-                <Grid item xs={6} sm={3}>
-                    <Card className={classes.root}>
-                        <CardContent>
-                            <center>
-                                <Avatar alt="Remy Sharp" src="https://writestylesonline.com/wp-content/uploads/2019/01/What-To-Wear-For-Your-Professional-Profile-Picture-or-Headshot.jpg" className={classes.large} />
-                                <br />
-                                <h4>Riya Sharma</h4>
-                                <h5>riya@gmail.com</h5>
-                            </center>
-
-                        </CardContent>
-                        <CardActions>
-                            <Button fullWidth>View More</Button>
-                        </CardActions>
-                    </Card>
-                </Grid>
-                <Grid item xs={6} sm={3}>
-                    <Card className={classes.root}>
-                        <CardContent>
-                            <center>
-                                <Avatar alt="Remy Sharp" src="https://writestylesonline.com/wp-content/uploads/2019/01/What-To-Wear-For-Your-Professional-Profile-Picture-or-Headshot.jpg" className={classes.large} />
-                                <br />
-                                <h4>Riya Sharma</h4>
-                                <h5>riya@gmail.com</h5>
-                            </center>
-
-                        </CardContent>
-                        <CardActions>
-                            <Button fullWidth>View More</Button>
-                        </CardActions>
-                    </Card>
-                </Grid>
+                {allUsers.length === 0 ? <div></div>:allUsers.map(showUser)}
             </Grid>
-
-
         </Form>
       </FormikProvider>
+
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        open={openSbar}
+        autoHideDuration={6000}
+        onClose={handleCloseSbar}
+        message="User Added"
+        action={
+          <React.Fragment>
+            <IconButton size="small" aria-label="close" color="inherit" onClick={handleCloseSbar}>
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
+
     </>
   );
 }

@@ -11,6 +11,7 @@ const Gratitude_Model = require('../models/Gratitude');
 const SuccessfullPayment_Model = require('../models/SuccessfullPayment');
 const SoulPrints_Model = require('../models/SoulPrints');
 const Clients_Model = require('../models/Clients');
+const User_Model = require('../models/User')
 
 
 const stripe = require('stripe')('sk_test_51InJOCJegW8ESdrHJXF6anBwEWJMrxOlSdTiwWFMYs3B0VqCJfLdVlIpX05fNp2XWPBXXjh8ou8TuqhCQiqeXmt5006D7WwSfy')
@@ -1663,5 +1664,53 @@ router.get('/deleteuser/:_id', (req, res) => {
         })
         .catch(err => res.status(400).json(`Error: ${err}`))
 });
+
+//
+router.post('/adduser', (req, res) => {
+    const body = req.body
+
+    if (!body) {
+        return res.status(400).json({
+            success: false,
+            error: 'You must provide info',
+        })
+    }
+
+    const user = new User_Model(body)
+
+    if (!user) {
+        return res.status(400).json({ success: false, error: err })
+    }
+
+    user
+        .save()
+        .then(() => {
+            return res.status(201).json({
+                success: true,
+                id: user._id,
+                message: 'User Created!',
+            })
+        })
+        .catch(error => {
+            return res.status(400).json({
+                error,
+                message: 'Error',
+            })
+        })
+});
+
+router.get('/getalluser', async (req, res) => {
+    await User_Model.find({}, (err, users) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
+        if (!users.length) {
+            return res
+                .status(404)
+                .json({ success: false, error: `not found` })
+        }
+        return res.status(200).json({ success: true, data: users })
+    }).catch(err => console.log(err))
+})
 
 module.exports = router;
