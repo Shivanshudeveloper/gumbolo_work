@@ -1,35 +1,27 @@
 const mongoose = require('mongoose');
 // Schema
-const userEmpDataSchema = new mongoose.Schema({
-    firstname: {
+const payrollDataSchema = new mongoose.Schema({
+    payroll: {
         type: String,
         required: true
     },
-    lastname: {
+    empname: {
         type: String,
         required: true
     },
-    email: {
+    empid: {
         type: String,
         required: true
     },
-    phone: {
+    hour: {
         type: String,
         required: true
     },
-    address: {
+    perk: {
         type: String,
         required: true
     },
-    position: {
-        type: String,
-        required: true
-    },
-    hours: {
-        type: String,
-        required: true
-    },
-    image: {
+    total: {
         type: String,
         required: true
     },
@@ -38,5 +30,5 @@ const userEmpDataSchema = new mongoose.Schema({
         default: Date.now
     }
 })
-const useremp = mongoose.model('useremp', userEmpDataSchema)
-module.exports = useremp
+const payroll = mongoose.model('payroll', payrollDataSchema)
+module.exports = payroll

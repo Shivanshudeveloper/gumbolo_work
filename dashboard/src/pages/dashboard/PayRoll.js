@@ -54,6 +54,11 @@ import Slide from '@material-ui/core/Slide';
 
 import TextField from '@material-ui/core/TextField';
 
+import { API_SERVICE } from '../../config/URI';
+import axios from 'axios';
+
+import { Snackbar } from "@material-ui/core";
+
 
 
 const BorderLinearProgress = withStyles((theme) => ({
@@ -214,6 +219,55 @@ export default function PayRoll(props) {
   // let { userid } = useParams();
   // console.log(userid);
 
+  const [newPayroll, setNewPayroll] = useState({
+    payroll: "",
+    empname: "",
+    empid: "",
+    hour: "",
+    perk: "",
+    total: ""
+  });
+  
+  const changeEle = (event) => {
+    const {name, value} = event.target;
+    setNewPayroll(prevValue => {
+        return {
+            ...prevValue,
+            [name]: value
+        }
+    })
+  }
+  
+  const handelPayrollSumbit = () => {
+    axios.post(`${API_SERVICE}/api/v1/main/addpayroll`, newPayroll).then(res => {
+      console.log("User added successfully");
+      setNewPayroll({
+        payroll: "",
+        empname: "",
+        empid: "",
+        hour: "",
+        perk: "",
+        total: ""
+      })
+      setOpenSbar(true);
+      handleCloseDia()
+    }
+  )
+  }
+
+  const [openSbar, setOpenSbar] = React.useState(false);
+
+  const handleClickSbar = () => {
+    setOpenSbar(true);
+  };
+
+  const handleCloseSbar = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenSbar(false);
+  };
+
   return (
     <Page title="Gumbolo - Payroll">
       
@@ -251,38 +305,44 @@ export default function PayRoll(props) {
                 style={{ margin: "8px" }}
                 placeholder=""
                 fullWidth
+                name="payroll" onChange={changeEle} value={newPayroll.payroll}
               />
               <TextField
                 label="Employee Name"
                 style={{ margin: 8 }}
                 placeholder=""
                 fullWidth
+                name="empname" onChange={changeEle} value={newPayroll.empname}
               />
               <TextField
                 label="Employee ID"
                 style={{ margin: 8 }}
                 placeholder=""
                 fullWidth
+                name="empid" onChange={changeEle} value={newPayroll.empid}
               />
               <TextField
                 label="Hours Worked"
                 style={{ margin: 8 }}
                 placeholder=""
                 fullWidth
+                name="hour" onChange={changeEle} value={newPayroll.hour}
               />
               <TextField
                 label="Perks"
                 style={{ margin: 8 }}
                 placeholder=""
                 fullWidth
+                name="perk" onChange={changeEle} value={newPayroll.perk}
               />
               <TextField
                 label="Total Pay Roll"
                 style={{ margin: 8 }}
                 placeholder=""
                 fullWidth
+                name="total" onChange={changeEle} value={newPayroll.total}
               />
-              <Button variant="contained" color="primary" fullWidth style={{ margin: 8 }} size="large">Add a new payroll</Button>
+              <Button variant="contained" color="primary" fullWidth style={{ margin: 8 }} size="large" onClick={handelPayrollSumbit}>Add a new payroll</Button>
             </div>
             </Container>
         </Dialog>
@@ -551,10 +611,24 @@ export default function PayRoll(props) {
                 </section>
             </TabPanel>
         </SwipeableViews>
-
-
-        
       </Container>
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        open={openSbar}
+        autoHideDuration={6000}
+        onClose={handleCloseSbar}
+        message="Payroll Added"
+        action={
+          <React.Fragment>
+            <IconButton size="small" aria-label="close" color="inherit" onClick={handleCloseSbar}>
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </React.Fragment>
+        }
+      />
     </Page>
   );
 }

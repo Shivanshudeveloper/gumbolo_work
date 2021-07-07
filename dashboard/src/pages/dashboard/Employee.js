@@ -623,7 +623,7 @@ const [openSbar, setOpenSbar] = React.useState(false);
             </Grid>
 
             <Grid style={{ marginTop: '20px' }} container spacing={3}>
-                {allUsers.length === 0 ? <div></div>:allUsers.map(showUser)}
+                {allUsers.length === 0 ? <h1 style={{marginLeft: "100px"}}>Loading...</h1>:allUsers.map(showUser)}
             </Grid>
         </Form>
       </FormikProvider>
