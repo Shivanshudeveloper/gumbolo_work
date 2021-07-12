@@ -153,7 +153,7 @@ export default function Aggrements() {
               <Card sx={{ p: 3 }}>
                 <Stack spacing={3}>
                   <div>
-                    <LabelStyle>Aggrement</LabelStyle>
+                    <LabelStyle>Agreement</LabelStyle>
                     <QuillEditor
                       id="post-content"
                       value={values.content}
