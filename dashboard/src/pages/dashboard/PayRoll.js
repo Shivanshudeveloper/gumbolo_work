@@ -503,30 +503,30 @@ export default function PayRoll(props) {
                           <Grid container spacing={3}>
                             <Grid item xs={6} sm={3}>
                               <Paper className={classes.paper} >
-                                May 23 - May 29
+                                Payroll
                                 <br />
-                                10h 22m
+                                -
                               </Paper>
                             </Grid>
                             <Grid item xs={6} sm={3}>
                               <Paper className={classes.paper} >
-                                May 30 - Jun 1
+                                Perks Given
                                 <br />
-                                0h 20m
+                                -
                               </Paper>
                             </Grid>
                             <Grid item xs={6} sm={3}>
                               <Paper className={classes.paper} >
-                                Jun 2 - Jun 4
+                                Hours Worked
                                 <br />
-                                10h 22m
+                                -
                               </Paper>
                             </Grid>
                             <Grid item xs={6} sm={3}>
                               <Paper className={classes.paper} >
-                                Jun 6 - July 2
+                                Total Payroll
                                 <br />
-                                40h 22m
+                                -
                               </Paper>
                             </Grid>
                           </Grid>
@@ -552,30 +552,30 @@ export default function PayRoll(props) {
                           <Grid container spacing={3}>
                             <Grid item xs={6} sm={3}>
                               <Paper className={classes.paper} >
-                                May 23 - May 29
+                                Payroll
                                 <br />
-                                10h 22m
+                                -
                               </Paper>
                             </Grid>
                             <Grid item xs={6} sm={3}>
                               <Paper className={classes.paper} >
-                                May 30 - Jun 1
+                                Perks Given
                                 <br />
-                                0h 20m
+                                -
                               </Paper>
                             </Grid>
                             <Grid item xs={6} sm={3}>
                               <Paper className={classes.paper} >
-                                Jun 2 - Jun 4
+                                Hours Worked
                                 <br />
-                                10h 22m
+                                -
                               </Paper>
                             </Grid>
                             <Grid item xs={6} sm={3}>
                               <Paper className={classes.paper} >
-                                Jun 6 - July 2
+                                Total Payroll
                                 <br />
-                                40h 22m
+                                -
                               </Paper>
                             </Grid>
                           </Grid>
