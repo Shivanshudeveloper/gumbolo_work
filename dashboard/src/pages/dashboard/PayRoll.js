@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // material
 import { Container } from '@material-ui/core';
 // hooks
@@ -249,10 +249,133 @@ export default function PayRoll(props) {
         perk: "",
         total: ""
       })
+      axios.get(`${API_SERVICE}/api/v1/main/getallpayroll`).then(res => {
+        setPay(res.data.data)
+        console.log("getting data");
+      })
       setOpenSbar(true);
       handleCloseDia()
     }
   )
+  }
+
+  const [pay, setPay] = useState([])
+
+  useEffect(() => {
+    axios.get(`${API_SERVICE}/api/v1/main/getallpayroll`).then(res => {
+      setPay(res.data.data)
+    })
+  },[])
+
+  function paycard(pay, index){
+    if(index>4){
+      return (null);
+    }
+    var date_ = new Date(pay.date);
+    date_ = date_.toDateString();
+    return(
+      <Card style={{ marginTop: '20px' }} >
+        <CardHeader
+          avatar={
+            <Avatar src="https://eadn-wc03-196922.nxedge.io/cdn/wp-content/uploads/2018/10/young-attractive-woman.jpg" aria-label="recipe" className={classes.avatar}>
+              R
+            </Avatar>
+          }
+          action={
+            <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} >More</Button>
+          }
+          title={pay.empname}
+          subheader={date_}
+        />
+        <CardContent>
+          <Grid container spacing={3}>
+            <Grid item xs={6} sm={3}>
+              <Paper className={classes.paper} >
+                Payroll
+                <br />
+                {pay.payroll}
+              </Paper>
+            </Grid>
+            <Grid item xs={6} sm={3}>
+              <Paper className={classes.paper} >
+                Perks Given
+                <br />
+                {pay.perk}
+              </Paper>
+            </Grid>
+            <Grid item xs={6} sm={3}>
+              <Paper className={classes.paper} >
+                Hours Worked
+                <br />
+                {pay.hour}
+              </Paper>
+            </Grid>
+            <Grid item xs={6} sm={3}>
+              <Paper className={classes.paper} >
+                Total Payroll
+                <br />
+                {pay.total}
+              </Paper>
+            </Grid>
+          </Grid>
+        </CardContent>
+      </Card>
+    )
+  }
+
+  function paycard2(pay, index){
+    var date_ = new Date(pay.date);
+    date_ = date_.toDateString();
+    return(
+      <Card style={{ marginTop: '20px' }} >
+        <CardHeader
+          avatar={
+            <Avatar src="https://eadn-wc03-196922.nxedge.io/cdn/wp-content/uploads/2018/10/young-attractive-woman.jpg" aria-label="recipe" className={classes.avatar}>
+              R
+            </Avatar>
+          }
+          action={
+            <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} >More</Button>
+          }
+          title={pay.empname}
+          subheader={date_}
+        />
+        <CardContent>
+          <BorderLinearProgress variant="determinate" value={parseInt(pay.hour)} />
+          {pay.hour}<i>h</i>
+          <Grid container spacing={3}>
+            <Grid item xs={6} sm={3}>
+              <Paper className={classes.paper} >
+                Payroll
+                <br />
+                {pay.payroll}
+              </Paper>
+            </Grid>
+            <Grid item xs={6} sm={3}>
+              <Paper className={classes.paper} >
+                Perks Given
+                <br />
+                {pay.perk}
+              </Paper>
+            </Grid>
+            <Grid item xs={6} sm={3}>
+              <Paper className={classes.paper} >
+                Hours Worked
+                <br />
+                {pay.hour}
+              </Paper>
+            </Grid>
+            <Grid item xs={6} sm={3}>
+              <Paper className={classes.paper} >
+                Total Payroll
+                <br />
+                {pay.total}
+              </Paper>
+            </Grid>
+          </Grid>
+        </CardContent>
+      </Card>
+    )
   }
 
   const [openSbar, setOpenSbar] = React.useState(false);
@@ -385,202 +508,14 @@ export default function PayRoll(props) {
                     <br />
 
                     <Paper style={{ padding: '10px' }} elevation={0}>
-                      <Card style={{ marginTop: '20px' }} >
-                        <CardHeader
-                          avatar={
-                            <Avatar src="https://eadn-wc03-196922.nxedge.io/cdn/wp-content/uploads/2018/10/young-attractive-woman.jpg" aria-label="recipe" className={classes.avatar}>
-                              R
-                            </Avatar>
-                          }
-                          action={
-                            <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} >More</Button>
-                          }
-                          title="Daksh Tyagi"
-                          subheader="September 14, 2016"
-                        />
-                        <CardContent>
-                          <Grid container spacing={3}>
-                            <Grid item xs={6} sm={3}>
-                              <Paper className={classes.paper} >
-                                Payroll
-                                <br />
-                                -
-                              </Paper>
-                            </Grid>
-                            <Grid item xs={6} sm={3}>
-                              <Paper className={classes.paper} >
-                                Perks Given
-                                <br />
-                                -
-                              </Paper>
-                            </Grid>
-                            <Grid item xs={6} sm={3}>
-                              <Paper className={classes.paper} >
-                                Hours Worked
-                                <br />
-                                -
-                              </Paper>
-                            </Grid>
-                            <Grid item xs={6} sm={3}>
-                              <Paper className={classes.paper} >
-                                Total Payroll
-                                <br />
-                                -
-                              </Paper>
-                            </Grid>
-                          </Grid>
-                        </CardContent>
-                      </Card>
-                      
-                      <Card style={{ marginTop: '20px' }} >
-                        <CardHeader
-                          avatar={
-                            <Avatar src="https://eadn-wc03-196922.nxedge.io/cdn/wp-content/uploads/2018/10/young-attractive-woman.jpg" aria-label="recipe" className={classes.avatar}>
-                              R
-                            </Avatar>
-                          }
-                          action={
-                            <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} >More</Button>
-                          }
-                          title="Daksh Tyagi"
-                          subheader="September 14, 2016"
-                        />
-                        <CardContent>
-                          <Grid container spacing={3}>
-                            <Grid item xs={6} sm={3}>
-                              <Paper className={classes.paper} >
-                                Payroll
-                                <br />
-                                -
-                              </Paper>
-                            </Grid>
-                            <Grid item xs={6} sm={3}>
-                              <Paper className={classes.paper} >
-                                Perks Given
-                                <br />
-                                -
-                              </Paper>
-                            </Grid>
-                            <Grid item xs={6} sm={3}>
-                              <Paper className={classes.paper} >
-                                Hours Worked
-                                <br />
-                                -
-                              </Paper>
-                            </Grid>
-                            <Grid item xs={6} sm={3}>
-                              <Paper className={classes.paper} >
-                                Total Payroll
-                                <br />
-                                -
-                              </Paper>
-                            </Grid>
-                          </Grid>
-                        </CardContent>
-                      </Card>
+                      {pay.length === 0? <h1>Loading</h1>:pay.map(paycard)}
                     </Paper>
                 </section>
             </TabPanel>
             <TabPanel value={value} index={1} dir={theme.direction}>
                 <section>
                     <Paper style={{ padding: '10px' }} elevation={0}>
-                      <Card style={{ marginTop: '20px' }} >
-                        <CardHeader
-                          avatar={
-                            <Avatar src="https://eadn-wc03-196922.nxedge.io/cdn/wp-content/uploads/2018/10/young-attractive-woman.jpg" aria-label="recipe" className={classes.avatar}>
-                              R
-                            </Avatar>
-                          }
-                          action={
-                            <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} >More</Button>
-                          }
-                          title="Daksh Tyagi"
-                          subheader="September 14, 2016"
-                        />
-                        <CardContent>
-                          <BorderLinearProgress variant="determinate" value={50} />
-                          <i>10h 40m</i>
-                          <Grid container spacing={3}>
-                            <Grid item xs={6} sm={3}>
-                              <Paper className={classes.paper} >
-                                Payroll
-                                <br />
-                                -
-                              </Paper>
-                            </Grid>
-                            <Grid item xs={6} sm={3}>
-                              <Paper className={classes.paper} >
-                                Perks Given
-                                <br />
-                                -
-                              </Paper>
-                            </Grid>
-                            <Grid item xs={6} sm={3}>
-                              <Paper className={classes.paper} >
-                                Hours Worked
-                                <br />
-                                -
-                              </Paper>
-                            </Grid>
-                            <Grid item xs={6} sm={3}>
-                              <Paper className={classes.paper} >
-                                Total Payroll
-                                <br />
-                                -
-                              </Paper>
-                            </Grid>
-                          </Grid>
-                        </CardContent>
-                      </Card>
-                      
-                      <Card style={{ marginTop: '20px' }} >
-                        <CardHeader
-                          avatar={
-                            <Avatar src="https://eadn-wc03-196922.nxedge.io/cdn/wp-content/uploads/2018/10/young-attractive-woman.jpg" aria-label="recipe" className={classes.avatar}>
-                              R
-                            </Avatar>
-                          }
-                          action={
-                            <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} >More</Button>
-                          }
-                          title="Daksh Tyagi"
-                          subheader="September 14, 2016"
-                        />
-                        <CardContent>
-                          <BorderLinearProgress variant="determinate" value={25} />
-                          <i>08h 40m</i>
-                          <Grid container spacing={3}>
-                            <Grid item xs={6} sm={3}>
-                              <Paper className={classes.paper} >
-                                Payroll
-                                <br />
-                                -
-                              </Paper>
-                            </Grid>
-                            <Grid item xs={6} sm={3}>
-                              <Paper className={classes.paper} >
-                                Perks Given
-                                <br />
-                                -
-                              </Paper>
-                            </Grid>
-                            <Grid item xs={6} sm={3}>
-                              <Paper className={classes.paper} >
-                                Hours Worked
-                                <br />
-                                -
-                              </Paper>
-                            </Grid>
-                            <Grid item xs={6} sm={3}>
-                              <Paper className={classes.paper} >
-                                Total Payroll
-                                <br />
-                                -
-                              </Paper>
-                            </Grid>
-                          </Grid>
-                        </CardContent>
-                      </Card>
+                      {pay.length === 0? <h1>Loading</h1>:pay.map(paycard2)}
                     </Paper>
                 </section>
             </TabPanel>
