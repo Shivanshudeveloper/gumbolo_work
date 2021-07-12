@@ -155,14 +155,15 @@ const rows = [
 
 
 
-const data = [
-    { year: 'May 23 -May 29', population: 2.525 },
-    { year: 'May 30 -Jun 5', population: 3.018 },
-    { year: 'Jun 6 -Jun 12', population: 3.682 },
-    { year: 'Jun 13 -Jun 19', population: 4.440 },
-    { year: 'Jun 20 -Jun 26', population: 5.310 },
-    { year: 'Jun 27 -Jul 3', population: 6.127 },
-];
+// const data = [
+//     { year: 'May 23 -May 29', population: 2.525 },
+//     { year: 'May 30 -Jun 5', population: 3.018 },
+//     { year: 'Jun 6 -Jun 12', population: 3.682 },
+//     { year: 'Jun 13 -Jun 19', population: 4.440 },
+//     { year: 'Jun 20 -Jun 26', population: 5.310 },
+//     { year: 'Jun 27 -Jul 3', population: 6.127 },
+// ];
+
 
 const useStylesDia = makeStyles((theme) => ({
   appBar: {
@@ -260,10 +261,19 @@ export default function PayRoll(props) {
   }
 
   const [pay, setPay] = useState([])
+  const [data, setData] = useState([])
 
   useEffect(() => {
     axios.get(`${API_SERVICE}/api/v1/main/getallpayroll`).then(res => {
       setPay(res.data.data)
+      let temp = []
+      for(var i=0; i<7 && i<res.data.data.length; i++){
+        var date_ = new Date(res.data.data[i].date);
+        date_ = date_.toDateString();
+        temp.push({ year: res.data.data[i].empname, population: parseInt(res.data.data[i].hour)})
+      }
+      setData(temp)
+      console.log(temp);
     })
   },[])
 
@@ -492,7 +502,7 @@ export default function PayRoll(props) {
             <TabPanel value={value} index={0} dir={theme.direction}>
                 <section>
                     <Chart
-                        data={data}
+                        data={data.length===0?[]:data}
                     >
                         <ArgumentAxis />
                         <ValueAxis max={7} />
