@@ -55,6 +55,10 @@ const sidebarConfig = [
       {
         title: 'Pay Rolls',
         path: '/dashboard/payroll',
+      },
+      {
+        title: 'Settings',
+        path: '/dashboard/user/account',
       }
       // {
       //   title: 'Report',
