@@ -16,6 +16,8 @@ import useIsMountedRef from '../../../hooks/useIsMountedRef';
 import { MIconButton } from '../../@material-extend';
 
 // ----------------------------------------------------------------------
+import { API_SERVICE } from '../../../config/URI'
+import axios from 'axios';
 
 export default function RegisterForm() {
   const { register } = useAuth();
@@ -64,9 +66,38 @@ export default function RegisterForm() {
 
   const { errors, touched, handleSubmit, isSubmitting, getFieldProps } = formik;
 
+  const [data, setData] = useState({
+    fname: "",
+    lname: "",
+    email: "",
+    password: "",
+});
+
+const changeEle = (event) => {
+    const {name, value} = event.target;
+    setData(prevValue => {
+        return {
+            ...prevValue,
+            [name]: value
+        }
+    })
+}
+
+const submitData = () => {
+  axios.post(`${API_SERVICE}/api/v1/main/register`, data).then(res => {
+    console.log("User added successfully");
+    setData({
+      fname: "",
+      lname: "",
+      email: "",
+      password: "",
+    })
+  })
+}
+
   return (
     <FormikProvider value={formik}>
-      <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
+      <Form autoComplete="off" noValidate>
         <Stack spacing={3}>
           {errors.afterSubmit && <Alert severity="error">{errors.afterSubmit}</Alert>}
 
@@ -75,16 +106,18 @@ export default function RegisterForm() {
               fullWidth
               label="First name"
               {...getFieldProps('firstName')}
-              error={Boolean(touched.firstName && errors.firstName)}
-              helperText={touched.firstName && errors.firstName}
+              // error={Boolean(touched.firstName && errors.firstName)}
+              //helperText={touched.firstName && errors.firstName}
+              name="fname" onChange={changeEle} value={data.fname}
             />
 
             <TextField
               fullWidth
               label="Last name"
               {...getFieldProps('lastName')}
-              error={Boolean(touched.lastName && errors.lastName)}
-              helperText={touched.lastName && errors.lastName}
+              // error={Boolean(touched.lastName && errors.lastName)}
+              //helperText={touched.lastName && errors.lastName}
+              name="lname" onChange={changeEle} value={data.lname}
             />
           </Stack>
 
@@ -94,8 +127,9 @@ export default function RegisterForm() {
             type="email"
             label="Email address"
             {...getFieldProps('email')}
-            error={Boolean(touched.email && errors.email)}
-            helperText={touched.email && errors.email}
+            // error={Boolean(touched.email && errors.email)}
+            //helperText={touched.email && errors.email}
+            name="email" onChange={changeEle} value={data.email}
           />
 
           <TextField
@@ -113,11 +147,12 @@ export default function RegisterForm() {
                 </InputAdornment>
               )
             }}
-            error={Boolean(touched.password && errors.password)}
-            helperText={touched.password && errors.password}
+            // error={Boolean(touched.password && errors.password)}
+            //helperText={touched.password && errors.password}
+            name="password" onChange={changeEle} value={data.password}
           />
 
-          <LoadingButton fullWidth size="large" type="submit" variant="contained" loading={isSubmitting}>
+          <LoadingButton fullWidth size="large" type="submit" variant="contained" onClick={submitData}>
             Register
           </LoadingButton>
         </Stack>

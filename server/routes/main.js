@@ -13,6 +13,7 @@ const SoulPrints_Model = require('../models/SoulPrints');
 const Clients_Model = require('../models/Clients');
 const User_Model = require('../models/User')
 const Payroll_Model = require('../models/Payroll')
+const Register_Model = require('../models/Register')
 
 
 const stripe = require('stripe')('sk_test_51InJOCJegW8ESdrHJXF6anBwEWJMrxOlSdTiwWFMYs3B0VqCJfLdVlIpX05fNp2XWPBXXjh8ou8TuqhCQiqeXmt5006D7WwSfy')
@@ -1759,5 +1760,37 @@ router.get('/getallpayroll', async (req, res) => {
         return res.status(200).json({ success: true, data: payroll })
     }).catch(err => console.log(err))
 })
+
+router.post('/register', (req, res) => {
+    const body = req.body
+
+    if (!body) {
+        return res.status(400).json({
+            success: false,
+            error: 'You must provide info',
+        })
+    }
+
+    const reg = new Register_Model(body)
+
+    if (!reg) {
+        return res.status(400).json({ success: false, error: err })
+    }
+
+    reg
+        .save()
+        .then(() => {
+            return res.status(201).json({
+                success: true,
+                message: 'user Created!',
+            })
+        })
+        .catch(error => {
+            return res.status(400).json({
+                error,
+                message: 'Error',
+            })
+        })
+});
 
 module.exports = router;
