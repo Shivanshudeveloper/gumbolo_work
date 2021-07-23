@@ -14,6 +14,9 @@ import { MHidden } from '../../components/@material-extend';
 import { RegisterForm } from '../../components/authentication/register';
 import AuthFirebaseSocials from '../../components/authentication/AuthFirebaseSocial';
 
+import { useState, useEffect } from 'react';
+import queryString from 'query-string';
+
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(Page)(({ theme }) => ({
@@ -46,7 +49,15 @@ const ContentStyle = styled('div')(({ theme }) => ({
 export default function Register() {
   const { method } = useAuth();
 
+  const [title, setTitle] = useState("Get started absolutely free.")
+
+  useEffect(() => {
+    const id = queryString.parse(window.location.search);
+    setTitle('Get started with '+id.plan+' plan');
+  }, [])
+
   return (
+
     <RootStyle title="Gumbolo">
       <AuthLayout>
         Already have an account? &nbsp;
@@ -69,11 +80,11 @@ export default function Register() {
           <Box sx={{ mb: 5, display: 'flex', alignItems: 'center' }}>
             <Box sx={{ flexGrow: 1 }}>
               <Typography variant="h4" gutterBottom>
-                Get started absolutely free.
+                {title}
               </Typography>
-              <Typography sx={{ color: 'text.secondary' }}>Free forever. No credit card needed.</Typography>
+              {/* <Typography sx={{ color: 'text.secondary' }}>Free forever. No credit card needed.</Typography> */}
             </Box>
-            <Tooltip title={(method === 'firebase' && 'Firebase') || (method === 'cognito' && 'Cognito') || 'JWT'}>
+            {/* <Tooltip title={(method === 'firebase' && 'Firebase') || (method === 'cognito' && 'Cognito') || 'JWT'}>
               <Box
                 component="img"
                 src={`/static/auth/${
@@ -81,7 +92,7 @@ export default function Register() {
                 }.png`}
                 sx={{ width: 32, height: 32 }}
               />
-            </Tooltip>
+            </Tooltip> */}
           </Box>
 
           {method === 'firebase' && <AuthFirebaseSocials />}
