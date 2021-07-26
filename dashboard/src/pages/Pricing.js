@@ -1,63 +1,63 @@
 // material
-import { experimentalStyled as styled } from '@material-ui/core/styles';
-import { Box, Grid, Switch, Container, Typography } from '@material-ui/core';
+import { experimentalStyled as styled } from "@material-ui/core/styles";
+import { Box, Grid, Switch, Container, Typography } from "@material-ui/core";
 // components
-import Page from '../components/Page';
-import { PricingPlanCard } from '../components/_external-pages/pricing';
+import Page from "../components/Page";
+import { PricingPlanCard } from "../components/_external-pages/pricing";
 //
-import { PlanFreeIcon, PlanStarterIcon, PlanPremiumIcon } from '../assets';
+import { PlanFreeIcon, PlanStarterIcon, PlanPremiumIcon } from "../assets";
 
 // ----------------------------------------------------------------------
 
 const PLANS = [
   {
-    subscription: 'basic',
+    subscription: "basic",
     icon: <PlanFreeIcon />,
     price: 0,
-    caption: 'forever',
+    caption: "forever",
     lists: [
-      { text: '3 prototypes', isAvailable: true },
-      { text: '3 boards', isAvailable: true },
-      { text: 'Up to 5 team members', isAvailable: false },
-      { text: 'Advanced security', isAvailable: false },
-      { text: 'Permissions & workflows', isAvailable: false }
+      { text: "1 User", isAvailable: true },
+      { text: "Unlimited clients", isAvailable: true },
+      { text: "Unlimited appointments", isAvailable: true },
+      { text: "Invoice Management", isAvailable: true },
+      { text: "Add-ons: Extra user $10", isAvailable: true },
     ],
-    labelAction: 'current plan'
+    labelAction: "choose basic",
   },
   {
-    subscription: 'starter',
+    subscription: "starter",
     icon: <PlanStarterIcon />,
-    price: 4.99,
-    caption: 'saving $24 a year',
+    price: 39,
+    caption: "saving $24 a year",
     lists: [
-      { text: '3 prototypes', isAvailable: true },
-      { text: '3 boards', isAvailable: true },
-      { text: 'Up to 5 team members', isAvailable: true },
-      { text: 'Advanced security', isAvailable: false },
-      { text: 'Permissions & workflows', isAvailable: false }
+      { text: "1 User", isAvailable: true },
+      { text: "Unlimited clients", isAvailable: true },
+      { text: "Unlimited appointments", isAvailable: true },
+      { text: "Invoice Management", isAvailable: true },
+      { text: "Add-ons: Extra user $10", isAvailable: true },
     ],
-    labelAction: 'choose starter'
+    labelAction: "choose starter",
   },
   {
-    subscription: 'premium',
+    subscription: "premium",
     icon: <PlanPremiumIcon />,
-    price: 9.99,
-    caption: 'saving $124 a year',
+    price: 89,
+    caption: "saving $124 a year",
     lists: [
-      { text: '3 prototypes', isAvailable: true },
-      { text: '3 boards', isAvailable: true },
-      { text: 'Up to 5 team members', isAvailable: true },
-      { text: 'Advanced security', isAvailable: true },
-      { text: 'Permissions & workflows', isAvailable: true }
+      { text: "20 millions tracks", isAvailable: true },
+      { text: "Up to 7 users", isAvailable: true },
+      { text: "Unlimited clients", isAvailable: true },
+      { text: "Unlimited appointments", isAvailable: true },
+      { text: "Employee Management", isAvailable: true },
     ],
-    labelAction: 'choose premium'
-  }
+    labelAction: "choose premium",
+  },
 ];
 
 const RootStyle = styled(Page)(({ theme }) => ({
-  minHeight: '100%',
+  minHeight: "100%",
   paddingTop: theme.spacing(15),
-  paddingBottom: theme.spacing(10)
+  paddingBottom: theme.spacing(10),
 }));
 
 // ----------------------------------------------------------------------
@@ -70,16 +70,16 @@ export default function Pricing() {
           Flexible plans for your
           <br /> community&apos;s size and needs
         </Typography>
-        <Typography align="center" sx={{ color: 'text.secondary' }}>
+        <Typography align="center" sx={{ color: "text.secondary" }}>
           Choose your plan and make modern online conversation magic
         </Typography>
 
         <Box sx={{ my: 5 }}>
           <Box
             sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'flex-end'
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "flex-end",
             }}
           >
             <Typography variant="overline" sx={{ mr: 1.5 }}>
@@ -90,7 +90,11 @@ export default function Pricing() {
               YEARLY (save 10%)
             </Typography>
           </Box>
-          <Typography variant="caption" align="right" sx={{ color: 'text.secondary', display: 'block' }}>
+          <Typography
+            variant="caption"
+            align="right"
+            sx={{ color: "text.secondary", display: "block" }}
+          >
             * Plus applicable taxes
           </Typography>
         </Box>
