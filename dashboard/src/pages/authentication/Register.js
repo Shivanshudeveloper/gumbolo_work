@@ -85,7 +85,7 @@ export default function Register() {
   const [amount, setAmount] = useState(0);
 
   const stripePromise = loadStripe(
-    "pk_test_51IdwfeH8KzFo5uc9gvu6EUUnzatrPyNeh6fVsTmr1eyW7RELgRGiDJid8LQmS9f2c47FE58dKBPoa6VlDCLkogxd00RKRpOPvb"
+    "pk_test_51J8Hs4JNNRBRk7NImwMn1K1DgBb8CGeuQKAqdS0gQKQ6Kc3xABcobNpGmFcQlNmAxq6UKuIRA1ySJBPCrwuirdtc00TwTa2zBV"
   );
 
   return (

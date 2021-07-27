@@ -16,7 +16,7 @@ const Payroll_Model = require("../models/Payroll");
 const Register_Model = require("../models/Register");
 
 const stripe = require("stripe")(
-  "sk_test_51IdwfeH8KzFo5uc9YHKzp2HOPkZJvH0ij0qhWeg0wQ17G73o5fVJYjMkWOfAmWUgjVZe0DesJvrQKbmAPSacXsVP00qMXnEqFr"
+  "sk_test_51J8Hs4JNNRBRk7NIV7fd3VIHFKoTb2iBbA5ExypFw2Vgmr5JaZMZiK5ChRVmY3BVFi2p9xvs83hUkeBCQ1D5Debk00XwY2ExUc"
 );
 
 // TEST
@@ -30,7 +30,7 @@ router.post("/charges", async (req, res) => {
   const { email, amount } = req.body;
   const paymentIntent = await stripe.paymentIntents.create({
     amount: amount * 100,
-    currency: "eur",
+    currency: "usd",
     // Verify your integration in this guide by including this parameter
     metadata: { integration_check: "accept_a_payment" },
     receipt_email: email,
@@ -42,17 +42,17 @@ router.post("/charges", async (req, res) => {
 // Database CRUD Operations
 // @POST Request to the Payment & Charges
 // POST
-router.post("/secret", async (req, res) => {
-  // const {email, amount} = req.body;
+// router.post("/secret", async (req, res) => {
+//   // const {email, amount} = req.body;
 
-  const paymentIntent = await stripe.paymentIntents.create({
-    amount: 1929,
-    currency: "eur",
-    payment_method_types: ["ideal"],
-  });
+//   const paymentIntent = await stripe.paymentIntents.create({
+//     amount: 1929,
+//     currency: "eur",
+//     payment_method_types: ["ideal"],
+//   });
 
-  res.json({ client_secret: paymentIntent.client_secret });
-});
+//   res.json({ client_secret: paymentIntent.client_secret });
+// });
 
 // Database CRUD Operations
 // @POST Request to add item in cart
