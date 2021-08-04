@@ -12,7 +12,7 @@ import Page from '../../components/Page';
 import { ResetPasswordForm } from '../../components/authentication/reset-password';
 //
 import { SentIcon } from '../../assets';
-
+import MainFooter from 'src/layouts/main/MainFooter';
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(Page)(({ theme }) => ({
@@ -31,7 +31,7 @@ export default function ResetPassword() {
 
   return (
     <RootStyle title="Reset Password | Minimal UI">
-      <LogoOnlyLayout />
+      {/* <LogoOnlyLayout /> */}
 
       <Container>
         <Box sx={{ maxWidth: 480, mx: 'auto' }}>
@@ -71,6 +71,7 @@ export default function ResetPassword() {
             </Box>
           )}
         </Box>
+        <MainFooter />
       </Container>
     </RootStyle>
   );

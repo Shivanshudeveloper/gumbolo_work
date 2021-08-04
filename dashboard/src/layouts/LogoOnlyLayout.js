@@ -4,6 +4,8 @@ import { experimentalStyled as styled } from '@material-ui/core/styles';
 // components
 import Logo from '../components/Logo';
 
+import MainFooter from './main/MainFooter';
+
 // ----------------------------------------------------------------------
 
 const HeaderStyle = styled('header')(({ theme }) => ({
@@ -29,6 +31,7 @@ export default function LogoOnlyLayout() {
         </RouterLink>
       </HeaderStyle>
       <Outlet />
+      <MainFooter />
     </>
   );
 }

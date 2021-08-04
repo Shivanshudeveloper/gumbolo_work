@@ -177,6 +177,8 @@ export default function Router() {
         { path: 'about-us', element: <About /> },
         { path: 'contact-us', element: <Contact /> },
         { path: 'faqs', element: <Faqs /> },
+        { path: 'terms-and-condition', element: <Terms /> },
+        { path: 'privacy-policy', element: <Privacy /> },
         {
           path: 'components',
           children: [
@@ -275,6 +277,8 @@ const LandingPage = Loadable(lazy(() => import('../pages/LandingPage')));
 const About = Loadable(lazy(() => import('../pages/About')));
 const Contact = Loadable(lazy(() => import('../pages/Contact')));
 const Faqs = Loadable(lazy(() => import('../pages/Faqs')));
+const Terms = Loadable(lazy(() => import('../pages/Terms')));
+const Privacy = Loadable(lazy(() => import("../pages/Privacy")))
 const ComingSoon = Loadable(lazy(() => import('../pages/ComingSoon')));
 const Maintenance = Loadable(lazy(() => import('../pages/Maintenance')));
 const Pricing = Loadable(lazy(() => import('../pages/Pricing')));

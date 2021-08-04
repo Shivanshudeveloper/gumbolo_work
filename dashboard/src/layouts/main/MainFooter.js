@@ -24,7 +24,7 @@ const SOCIALS = [
 
 const LINKS = [
   {
-    headline: 'Minimal',
+    headline: 'Gumbolo',
     children: [
       { name: 'About us', href: PATH_PAGE.about },
       { name: 'Contact us', href: PATH_PAGE.contact },
@@ -34,8 +34,8 @@ const LINKS = [
   {
     headline: 'Legal',
     children: [
-      { name: 'Terms and Condition', href: '#' },
-      { name: 'Privacy Policy', href: '#' }
+      { name: 'Terms and Condition', href: PATH_PAGE.termsAndCondition },
+      { name: 'Privacy Policy', href: PATH_PAGE.privacyPolicy }
     ]
   },
   {
@@ -57,8 +57,8 @@ const RootStyle = styled('div')(({ theme }) => ({
 export default function MainFooter() {
   return (
     <RootStyle>
-      <Divider />
-      <Container maxWidth="lg" sx={{ pt: 10 }}>
+      <Divider sx={{mt:10}}/>
+      <Container maxWidth="lg" sx={{pt: 10 }}>
         <Grid
           container
           justifyContent={{ xs: 'center', md: 'space-between' }}

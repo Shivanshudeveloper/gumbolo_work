@@ -11,6 +11,7 @@ import { PATH_AUTH } from '../../routes/paths';
 // components
 import Page from '../../components/Page';
 import { VerifyCodeForm } from '../../components/authentication/verify-code';
+import MainFooter from 'src/layouts/main/MainFooter';
 
 // ----------------------------------------------------------------------
 
@@ -26,7 +27,7 @@ const RootStyle = styled(Page)(({ theme }) => ({
 export default function VerifyCode() {
   return (
     <RootStyle title="Verify | Minimal UI">
-      <LogoOnlyLayout />
+      {/* <LogoOnlyLayout /> */}
 
       <Container>
         <Box sx={{ maxWidth: 480, mx: 'auto' }}>
@@ -59,6 +60,7 @@ export default function VerifyCode() {
             </Link>
           </Typography>
         </Box>
+        <MainFooter />
       </Container>
     </RootStyle>
   );

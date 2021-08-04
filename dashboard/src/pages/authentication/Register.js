@@ -26,7 +26,7 @@ import queryString from "query-string";
 
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-
+import MainFooter from "src/layouts/main/MainFooter";
 // ----------------------------------------------------------------------
 
 const RootStyle = styled(Page)(({ theme }) => ({
@@ -164,6 +164,7 @@ export default function Register() {
             </Typography>
           </MHidden>
         </ContentStyle>
+        <MainFooter />
       </Container>
     </RootStyle>
   );

@@ -5,6 +5,7 @@ import { Container, Box } from '@material-ui/core';
 //
 import DocsSidebar from './DocsSidebar';
 import DocsNavbar from './DocsNavbar';
+import MainFooter from "../main/MainFooter";
 
 // ----------------------------------------------------------------------
 
@@ -26,6 +27,7 @@ export default function DocsLayout() {
         }}
       >
         <Outlet />
+        <MainFooter />
       </Container>
     </Box>
   );
