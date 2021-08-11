@@ -63,16 +63,16 @@ export default function Login() {
         </Link>
       </AuthLayout>
 
-      <MHidden width="mdDown">
+      {/* <MHidden width="mdDown">
         <SectionStyle>
           <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
             Hi, Welcome Back
           </Typography>
           <img src="/static/illustrations/illustration_login.png" alt="login" />
         </SectionStyle>
-      </MHidden>
+      </MHidden> */}
 
-      <Container maxWidth="sm">
+      <Container maxWidth="xl">
         <ContentStyle>
           <Stack direction="row" alignItems="center" sx={{ mb: 5 }}>
             <Box sx={{ flexGrow: 1 }}>
@@ -82,9 +82,9 @@ export default function Login() {
               <Typography sx={{ color: 'text.secondary' }}>Enter your details below.</Typography>
             </Box>
 
-            <Tooltip title={method}>
+            {/* <Tooltip title={method}>
               <Box component="img" src={`/static/auth/ic_${method}.png`} sx={{ width: 32, height: 32 }} />
-            </Tooltip>
+            </Tooltip> */}
           </Stack>
 
           {method === 'firebase' && <AuthFirebaseSocials />}
