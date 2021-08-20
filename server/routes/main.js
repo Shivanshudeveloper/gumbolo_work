@@ -14,6 +14,7 @@ const Clients_Model = require("../models/Clients");
 const User_Model = require("../models/User");
 const Payroll_Model = require("../models/Payroll");
 const Register_Model = require("../models/Register");
+const Calender_Model = require("../models/Calender")
 
 const stripe = require("stripe")(
   "sk_test_51J8Hs4JNNRBRk7NIV7fd3VIHFKoTb2iBbA5ExypFw2Vgmr5JaZMZiK5ChRVmY3BVFi2p9xvs83hUkeBCQ1D5Debk00XwY2ExUc"
@@ -1972,5 +1973,62 @@ router.post("/register", (req, res) => {
       });
     });
 });
-
+//Calender
+router.get("/calender",async (req,res,next)=>{
+  let data
+  try{
+    data = await Calender_Model.find({})
+    
+  }catch(err){
+    return res.status(400).send("Could Not Find")
+  }
+  return res.json({events:data.map(e => e.toObject({getters:true}))})
+    
+})
+router.post("/calender/new", async (req,res,next) => {
+    let newEvent = new Calender_Model(req.body)
+    try{
+      await newEvent.save()
+    }catch(err){
+      return res.status(400).send("Unable to Save")
+    }
+    return res.status(200).send("Added Succesfully")
+})
+router.post("/calender/update", async(req,res,next) =>{
+  console.log(req);
+  let event 
+  try{
+    event = await Calender_Model.findById(req.body.eventId)
+  }catch(err){
+    return res.status(400).send("Unable to Update")
+  }
+  if(!event) {
+    return res.status(400).send("Unable to Find")
+  }
+  event.title = req.body.updateEvent.title
+  event.date = req.body.updateEvent.date
+  try {
+    await event.save()
+  } catch (error) {
+    return res.status(400).send("Unable to Update")
+  }
+  return res.status(200).send("Updated Succesfully")
+})
+router.post("/calender/delete",async(req,res,next)=>{
+  let event 
+  try{
+    event = await Calender_Model.findById(req.body.eventId)
+  }catch(err){
+    return res.status(400).send("Unable to Delete")
+  }
+  if(!event) {
+    return res.status(400).send("Unable to Find")
+  }
+  try{
+    await event.delete()
+  }catch(err){
+    return res.status(400).send("Unable to Delete")
+  }
+  return res.status(200).send("Deleted Succesfully")
+})
 module.exports = router;

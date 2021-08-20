@@ -1,7 +1,7 @@
 import { map, filter } from 'lodash';
 import { createSlice } from '@reduxjs/toolkit';
 // utils
-import axios from '../../utils/axios';
+import axios from 'axios'
 
 // ----------------------------------------------------------------------
 
@@ -104,7 +104,7 @@ export function getEvents() {
   return async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
-      const response = await axios.get('/api/calendar/events');
+      const response = await axios.get('http://localhost:5000/api/v1/main/calender');
       dispatch(slice.actions.getEventsSuccess(response.data.events));
     } catch (error) {
       dispatch(slice.actions.hasError(error));
@@ -118,7 +118,7 @@ export function createEvent(newEvent) {
   return async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
-      const response = await axios.post('/api/calendar/events/new', newEvent);
+      const response = await axios.post('http://localhost:5000/api/v1/main/calender/new', newEvent);
       dispatch(slice.actions.createEventSuccess(response.data.event));
     } catch (error) {
       dispatch(slice.actions.hasError(error));
@@ -132,7 +132,7 @@ export function updateEvent(eventId, updateEvent) {
   return async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
-      const response = await axios.post('/api/calendar/events/update', {
+      const response = await axios.post('http://localhost:5000/api/v1/main/calender/update', {
         eventId,
         updateEvent
       });
@@ -149,7 +149,7 @@ export function deleteEvent(eventId) {
   return async (dispatch) => {
     dispatch(slice.actions.startLoading());
     try {
-      await axios.post('/api/calendar/events/delete', { eventId });
+      await axios.post('http://localhost:5000/api/v1/main/calender/delete', { eventId });
       dispatch(slice.actions.deleteEventSuccess({ eventId }));
     } catch (error) {
       dispatch(slice.actions.hasError(error));

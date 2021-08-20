@@ -39,7 +39,7 @@ export default function Calendar() {
   const calendarRef = useRef(null);
   const { enqueueSnackbar } = useSnackbar();
   const [date, setDate] = useState(new Date());
-  const [view, setView] = useState(isMobile ? 'listWeek' : 'dayGridMonth');
+  const [view, setView] = useState(isMobile ? 'listWeek' : 'dayGridWeek');
   const selectedEvent = useSelector(selectedEventSelector);
   const { events, isOpenModal, selectedRange } = useSelector((state) => state.calendar);
 
@@ -145,7 +145,9 @@ export default function Calendar() {
   const handleCloseModal = () => {
     dispatch(closeModal());
   };
-
+  const handleDateClick = (args) => {
+    alert(args.dateStr);
+  }
   return (
     <Page title="Calendar | Minimal-UI">
       <Container maxWidth="xl">
@@ -166,15 +168,33 @@ export default function Calendar() {
 
         <Card>
           <CalendarStyle>
-            <CalendarToolbar
+          <FullCalendar
+              plugins={[ dayGridPlugin , interactionPlugin ]}
+              initialView="dayGridMonth"
+              dateClick = {handleAddEvent}
+              events={events}
+              ref={calendarRef}
+              rerenderDelay={10}
+              initialDate={date}
+              dayMaxEventRows={3}
+              select={handleSelectRange}
+              eventDrop={handleDropEvent}
+              eventClick={handleSelectEvent}
+              eventResize={handleResizeEvent}
+              height={isMobile ? 'auto' : 720}
+          />
+      </CalendarStyle>
+      
+          {/* <CalendarStyle> */}
+            {/* <CalendarToolbar
               date={date}
               view={view}
               onNextDate={handleClickDateNext}
               onPrevDate={handleClickDatePrev}
               onToday={handleClickToday}
               onChangeView={handleChangeView}
-            />
-            <FullCalendar
+            /> */}
+            {/* <FullCalendar
               weekends
               editable
               droppable
@@ -195,13 +215,12 @@ export default function Calendar() {
               eventResize={handleResizeEvent}
               height={isMobile ? 'auto' : 720}
               plugins={[listPlugin, dayGridPlugin, timelinePlugin, timeGridPlugin, interactionPlugin]}
-            />
-          </CalendarStyle>
+            /> */}
+          {/* </CalendarStyle> */}
         </Card>
 
         <DialogAnimate open={isOpenModal} onClose={handleCloseModal}>
           <DialogTitle>{selectedEvent ? 'Edit Event' : 'SCHEDULE APPOINTMENT'}</DialogTitle>
-
           <CalendarForm event={selectedEvent} range={selectedRange} onCancel={handleCloseModal} />
         </DialogAnimate>
       </Container>

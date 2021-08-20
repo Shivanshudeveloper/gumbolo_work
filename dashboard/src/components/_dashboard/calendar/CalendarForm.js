@@ -39,11 +39,7 @@ const COLOR_OPTIONS = [
 const getInitialValues = (event, range) => {
   const _event = {
     title: '',
-    description: '',
-    textColor: '#1890FF',
-    allDay: false,
-    start: range ? new Date(range.start) : new Date(),
-    end: range ? new Date(range.end) : new Date()
+    date: range ? new Date(range.start) : new Date(),
   };
 
   if (event || range) {
@@ -65,15 +61,10 @@ export default function CalendarForm({ event, range, onCancel }) {
   const { enqueueSnackbar } = useSnackbar();
   const dispatch = useDispatch();
   const isCreating = !event;
-
+  console.log(event)
   const EventSchema = Yup.object().shape({
     title: Yup.string().max(255).required('Title is required'),
-    description: Yup.string().max(5000),
-    end: Yup.date().when(
-      'start',
-      (start, schema) => start && schema.min(start, 'End date must be later than start date')
-    ),
-    start: Yup.date()
+    date: Yup.date()
   });
 
   const formik = useFormik({
@@ -83,11 +74,7 @@ export default function CalendarForm({ event, range, onCancel }) {
       try {
         const newEvent = {
           title: values.title,
-          description: values.description,
-          textColor: values.textColor,
-          allDay: values.allDay,
-          start: values.start,
-          end: values.end
+          date: values.date
         };
         if (event) {
           dispatch(updateEvent(event.id, newEvent));
@@ -121,25 +108,25 @@ export default function CalendarForm({ event, range, onCancel }) {
     <FormikProvider value={formik}>
       <Form autoComplete="off" noValidate onSubmit={handleSubmit}>
         <Stack spacing={3} sx={{ p: 3 }}>
-          <TextField
+          {/* <TextField
             fullWidth
             label="Client Name"
             {...getFieldProps('title')}
             error={Boolean(touched.title && errors.title)}
             helperText={touched.title && errors.title}
-          />
+          /> */}
 
           <TextField
             fullWidth
             multiline
             maxRows={4}
-            label="Service Title"
-            {...getFieldProps('description')}
-            error={Boolean(touched.description && errors.description)}
-            helperText={touched.description && errors.description}
+            label="Event Title"
+            {...getFieldProps('title')}
+            error={Boolean(touched.title && errors.title)}
+            helperText={touched.title && errors.title}
           />
 
-          <TextField
+          {/* <TextField
             fullWidth
             multiline
             maxRows={4}
@@ -147,17 +134,17 @@ export default function CalendarForm({ event, range, onCancel }) {
             // {...getFieldProps('description')}
             //error={Boolean(touched.description && errors.description)}
             //helperText={touched.description && errors.description}
-          />
+          /> */}
 
           <MobileDateTimePicker
             label="Start date"
             value={values.start}
             inputFormat="dd/MM/yyyy hh:mm a"
-            onChange={(date) => setFieldValue('start', date)}
+            onChange={(date) => setFieldValue('date', date)}
             renderInput={(params) => <TextField {...params} fullWidth />}
           />
 
-          <MobileDateTimePicker
+          {/* <MobileDateTimePicker
             label="End date"
             value={values.end}
             inputFormat="dd/MM/yyyy hh:mm a"
@@ -173,7 +160,7 @@ export default function CalendarForm({ event, range, onCancel }) {
             )}
           />
 
-          <ColorSinglePicker {...getFieldProps('textColor')} colors={COLOR_OPTIONS} />
+          <ColorSinglePicker {...getFieldProps('textColor')} colors={COLOR_OPTIONS} /> */}
         </Stack>
 
         <DialogActions>
